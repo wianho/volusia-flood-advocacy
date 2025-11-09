@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Your Representatives - Stop Flooding & Overdevelopment</title>
+    <meta name="description" content="One-click advocacy tool for Volusia County residents to contact representatives about flooding and overdevelopment">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .intro {
+            background: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .intro h2 {
+            font-size: 20px;
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .form-section {
+            background: #f9fafb;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .form-section h3 {
+            font-size: 18px;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .representatives {
+            margin-bottom: 20px;
+        }
+
+        .rep-section {
+            margin-bottom: 30px;
+        }
+
+        .rep-section h3 {
+            font-size: 18px;
+            color: #1f2937;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .rep-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.2s;
+        }
+
+        .rep-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+
+        .rep-info {
+            margin-bottom: 15px;
+        }
+
+        .rep-info h4 {
+            font-size: 16px;
+            color: #1f2937;
+            margin-bottom: 5px;
+        }
+
+        .rep-info p {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .rep-button {
+            width: 100%;
+            padding: 14px 24px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .rep-button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .rep-button:active {
+            transform: translateY(0);
+        }
+
+        .rep-button.federal {
+            background: #059669;
+        }
+
+        .rep-button.federal:hover {
+            background: #047857;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.4);
+        }
+
+        .rep-button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .alert.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+            display: block;
+        }
+
+        .alert.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+            display: block;
+        }
+
+        .footer {
+            background: #f9fafb;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .footer p {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .form-section {
+                padding: 20px;
+            }
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Contact Your Representatives</h1>
+            <p>Take action against flooding and overdevelopment in Volusia County</p>
+        </div>
+
+        <div class="content">
+            <div class="intro">
+                <h2>Your Voice Matters</h2>
+                <p>Volusia County is facing a flooding crisis caused by unchecked development. Use this tool to quickly contact your county, state, and federal representatives with evidence-based messages advocating for responsible growth policies.</p>
+            </div>
+
+            <div id="alertBox" class="alert"></div>
+
+            <div class="form-section">
+                <h3>Your Information</h3>
+                <div class="form-group">
+                    <label for="userName">Your Full Name *</label>
+                    <input type="text" id="userName" placeholder="John Smith" required>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Your Email Address *</label>
+                    <input type="email" id="userEmail" placeholder="john@example.com" required>
+                </div>
+            </div>
+
+            <div class="representatives">
+                <div class="rep-section">
+                    <h3>📍 County Level (Volusia County)</h3>
+                    <div class="rep-card">
+                        <div class="rep-info">
+                            <h4>Danny Robins - District 3 County Council</h4>
+                            <p>DRobins@volusia.org • 386-736-5920</p>
+                        </div>
+                        <button class="rep-button" onclick="sendCountyEmail()">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Send Email to County Council
+                        </button>
+                    </div>
+                </div>
+
+                <div class="rep-section">
+                    <h3>🏛️ State Level (Florida Legislature)</h3>
+                    <div class="rep-card">
+                        <div class="rep-info">
+                            <h4>Senator Tom Leek - FL Senate District 7</h4>
+                            <p>leek.tom.web@flsenate.gov • (850) 487-5007</p>
+                        </div>
+                        <button class="rep-button" onclick="sendStateEmail()">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Send Email to State Senator
+                        </button>
+                    </div>
+                </div>
+
+                <div class="rep-section">
+                    <h3>🇺🇸 Federal Level (U.S. Congress)</h3>
+                    <p style="color: #6b7280; margin-bottom: 15px; font-size: 14px;">Federal representatives use web forms. Click to copy your message and open their contact form.</p>
+
+                    <div class="rep-card">
+                        <div class="rep-info">
+                            <h4>Rep. Randy Fine - FL-6</h4>
+                            <p>U.S. House of Representatives • (202) 225-2706</p>
+                        </div>
+                        <button class="rep-button federal" onclick="contactFederal('fine')">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            Copy Message & Open Contact Form
+                        </button>
+                    </div>
+
+                    <div class="rep-card">
+                        <div class="rep-info">
+                            <h4>Rep. Cory Mills - FL-7</h4>
+                            <p>U.S. House of Representatives • (202) 225-4035</p>
+                        </div>
+                        <button class="rep-button federal" onclick="contactFederal('mills')">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            Copy Message & Open Contact Form
+                        </button>
+                    </div>
+
+                    <div class="rep-card">
+                        <div class="rep-info">
+                            <h4>Senator Ashley Moody</h4>
+                            <p>U.S. Senate • (202) 224-3041</p>
+                        </div>
+                        <button class="rep-button federal" onclick="contactFederal('moody')">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            Copy Message & Open Contact Form
+                        </button>
+                    </div>
+
+                    <div class="rep-card">
+                        <div class="rep-info">
+                            <h4>Senator Rick Scott</h4>
+                            <p>U.S. Senate • (202) 224-5274</p>
+                        </div>
+                        <button class="rep-button federal" onclick="contactFederal('scott')">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            Copy Message & Open Contact Form
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Slow the Growth</strong> - Fighting for responsible development in Volusia County</p>
+            <p style="margin-top: 10px;">Learn more at <a href="https://stgfloods386.from-fl.com">stgfloods386.from-fl.com</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Email templates
+        const templates = {
+            county: {
+                subject: "Urgent: Support Needed to Address Flooding Crisis from Overdevelopment",
+                body: `Dear County Council Member,
+
+My name is [NAME] and I am a resident of Volusia County District 3. I am writing to express my deep concern about the catastrophic flooding our community continues to experience as a direct result of unchecked development and urban sprawl.
+
+**I strongly support Bryon White for County Council District 3** because he understands that sprawl is not progress—it's destroying our county.
+
+The evidence is overwhelming:
+
+- **Hurricane Milton** dropped 16-18 inches of rain in October 2024, causing catastrophic flooding across unincorporated Volusia County (ClickOrlando, Oct 2024)
+
+- **New developments like Victoria Trails and Sawyer's Landing** have been built on excess fill at much higher elevations, creating a "dam-like effect" that diverts floodwater onto older neighboring properties that were never in flood zones before (WUSF/CFPublic, May 2024)
+
+- **Property owners haven't seen their grass in five years** due to constant flooding from nearby development—properties that were designated as "least likely to flood"
+
+- **Our County Council rejected a building moratorium** despite flooding being called "our new normal" by county officials (ClickOrlando, Oct 2024)
+
+This isn't just about water—it's about our homes, our safety, our skyrocketing insurance costs, and our quality of life. Urban sprawl is wrecking our ecosystems, driving up our taxes, worsening our traffic, and literally flooding our homes and businesses.
+
+**I urge you to:**
+1. Support a rural boundary to limit urban sprawl
+2. Strengthen stormwater management rules
+3. End the misuse of mitigation credits
+4. Consider development moratoriums until flooding is under control
+5. Support candidates like Bryon White who will fight for responsible growth
+
+Volusia County is worth saving. Please take action before more families lose their homes to preventable flooding.
+
+Sincerely,
+[NAME]
+[EMAIL]
+Volusia County Resident`
+            },
+            state: {
+                subject: "State Action Needed: Volusia County Flooding Crisis from Overdevelopment",
+                body: `Dear Senator/Representative,
+
+My name is [NAME] and I am a resident of Volusia County District 3. I am writing to urge state-level action to address the devastating flooding crisis our community faces as a result of unchecked development.
+
+**I strongly support Bryon White for County Council District 3** because we need leaders who will prioritize our communities over developer profits.
+
+The situation in Volusia County is dire:
+
+- **Hurricane Milton's 16-18 inches of rain** in October 2024 exposed the catastrophic failures of our current development policies, flooding thousands of homes across unincorporated Volusia County (ClickOrlando, Oct 2024)
+
+- **New developments built on excess fill** at higher elevations are creating dam-like effects, flooding older neighborhoods that were never in flood zones before. Residents blame specific developments like Victoria Trails and Sawyer's Landing for chronic flooding (WUSF/CFPublic, May 2024)
+
+- **Property owners can't use their land**—one owner hasn't seen his grass in five years due to flooding from adjacent development, despite being in an area designated "least likely to flood"
+
+- **Our local County Council rejected a building moratorium** despite the severity of the crisis (CFPublic, Oct 2024)
+
+This is a statewide issue. Florida's rapid development is outpacing our infrastructure and environmental capacity. We need state-level regulations to ensure:
+
+**I urge the Florida Legislature to:**
+1. Strengthen state stormwater management requirements for new developments
+2. Require comprehensive environmental impact studies before approving large-scale developments
+3. Provide funding for flood mitigation and infrastructure improvements in affected communities
+4. Empower local governments to enforce stricter development controls
+5. Reform mitigation credit systems that allow developers to bypass environmental protections
+
+Volusia County families are suffering. Our insurance costs are skyrocketing. Our roads are gridlocked. Our ecosystems are being destroyed. We need smarter, slower growth that protects Florida's future.
+
+Please support policies that prioritize community resilience over unchecked sprawl.
+
+Sincerely,
+[NAME]
+[EMAIL]
+Volusia County Resident`
+            },
+            federal: {
+                subject: "Federal Flood Mitigation Support Needed for Volusia County",
+                body: `Dear Senator/Representative,
+
+My name is [NAME] and I am a resident of Volusia County, Florida. I am writing to request federal support for flood mitigation efforts in our community, which has been devastated by flooding exacerbated by rapid, unchecked development.
+
+**I strongly support Bryon White for County Council District 3** because we need leaders who understand that protecting our communities from flooding requires smart growth policies, not endless sprawl.
+
+Volusia County is facing a flooding crisis:
+
+- **Hurricane Milton** dropped 16-18 inches of rain in October 2024, causing catastrophic flooding across our county. DeLand recorded 18.32 inches in 24 hours (ClickOrlando, Oct 2024)
+
+- **New residential developments** built on elevated fill dirt are creating dam-like effects that divert floodwaters onto older neighboring properties. Homes that were never in flood zones are now underwater for years at a time (WUSF/CFPublic, May 2024)
+
+- **Local government has failed to act**—our County Council rejected a building moratorium despite overwhelming evidence that development is causing the flooding (CFPublic, Oct 2024)
+
+While Volusia County recently received a **$133.5 million HUD flood mitigation grant** (CFPublic, May 2025), this only addresses the symptoms—not the root cause of irresponsible development policies.
+
+**I urge you to:**
+1. Support additional federal funding for flood mitigation infrastructure in Volusia County
+2. Advocate for stricter federal guidelines linking FEMA flood insurance rates to local development policies
+3. Support federal legislation that requires comprehensive environmental impact assessments for large-scale developments in flood-prone areas
+4. Investigate how federal infrastructure funding can incentivize smarter, more sustainable growth patterns
+5. Support communities fighting to protect their homes from development-induced flooding
+
+Climate change is making storms worse, but poor development policies are making flooding catastrophic. Federal leadership is essential to ensure that local communities have the tools and support needed to protect families from preventable flooding disasters.
+
+Our families deserve better. Our ecosystems deserve protection. Our future depends on smarter growth.
+
+Sincerely,
+[NAME]
+[EMAIL]
+Volusia County Resident`
+            }
+        };
+
+        const federalUrls = {
+            fine: 'https://fine.house.gov/contact',
+            mills: 'https://mills.house.gov/contact',
+            moody: 'https://www.moody.senate.gov/contact-us/',
+            scott: 'https://www.rickscott.senate.gov/contact/contact'
+        };
+
+        function showAlert(message, type = 'success') {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.textContent = message;
+            alertBox.className = `alert ${type}`;
+
+            setTimeout(() => {
+                alertBox.className = 'alert';
+            }, 5000);
+        }
+
+        function validateForm() {
+            const name = document.getElementById('userName').value.trim();
+            const email = document.getElementById('userEmail').value.trim();
+
+            if (!name || !email) {
+                showAlert('Please enter your name and email address first.', 'error');
+                return null;
+            }
+
+            if (!email.includes('@') || !email.includes('.')) {
+                showAlert('Please enter a valid email address.', 'error');
+                return null;
+            }
+
+            return { name, email };
+        }
+
+        function fillTemplate(template, name, email) {
+            return template
+                .replace(/\[NAME\]/g, name)
+                .replace(/\[EMAIL\]/g, email);
+        }
+
+        function sendCountyEmail() {
+            const user = validateForm();
+            if (!user) return;
+
+            const subject = templates.county.subject;
+            const body = fillTemplate(templates.county.body, user.name, user.email);
+
+            const mailtoLink = `mailto:DRobins@volusia.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailtoLink;
+            showAlert('Opening your email client... If nothing happens, please check your default email app settings.');
+        }
+
+        function sendStateEmail() {
+            const user = validateForm();
+            if (!user) return;
+
+            const subject = templates.state.subject;
+            const body = fillTemplate(templates.state.body, user.name, user.email);
+
+            const mailtoLink = `mailto:leek.tom.web@flsenate.gov?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailtoLink;
+            showAlert('Opening your email client... If nothing happens, please check your default email app settings.');
+        }
+
+        async function contactFederal(rep) {
+            const user = validateForm();
+            if (!user) return;
+
+            const subject = templates.federal.subject;
+            const body = fillTemplate(templates.federal.body, user.name, user.email);
+            const fullMessage = `SUBJECT: ${subject}\n\n${body}`;
+
+            try {
+                // Copy to clipboard
+                await navigator.clipboard.writeText(fullMessage);
+
+                // Open contact form
+                window.open(federalUrls[rep], '_blank');
+
+                showAlert('Message copied to clipboard! Paste it into the contact form that just opened.');
+            } catch (err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = fullMessage;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+
+                try {
+                    document.execCommand('copy');
+                    window.open(federalUrls[rep], '_blank');
+                    showAlert('Message copied to clipboard! Paste it into the contact form that just opened.');
+                } catch (err) {
+                    showAlert('Could not copy to clipboard. Please try again.', 'error');
+                }
+
+                document.body.removeChild(textArea);
+            }
+        }
+    </script>
+</body>
+</html>
