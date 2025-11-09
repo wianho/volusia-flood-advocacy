@@ -300,17 +300,125 @@
 
             <div class="representatives">
                 <div class="rep-section">
-                    <h3>📍 County Level (Volusia County)</h3>
+                    <h3>📍 Volusia County Council (Email All)</h3>
                     <div class="rep-card">
                         <div class="rep-info">
-                            <h4>Danny Robins - District 3 County Council</h4>
-                            <p>DRobins@volusia.org • 386-736-5920</p>
+                            <h4>All County Council Members</h4>
+                            <p>Jeff Brower (Chair), Joie Johannson, Don Dempsey, Matt Reinhart, Danny Robins, Troy Kent, David Santiago</p>
                         </div>
-                        <button class="rep-button" onclick="sendCountyEmail()">
+                        <button class="rep-button" onclick="sendEmail('countyCouncil')">
                             <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
-                            Send Email to County Council
+                            Email All County Council Members
+                        </button>
+                    </div>
+                </div>
+
+                <div class="rep-section">
+                    <h3>🏙️ City Commissions (Choose Your City)</h3>
+
+                    <div class="rep-card">
+                        <div class="rep-info">
+                            <h4>New Smyrna Beach City Commission</h4>
+                            <p>Mayor + 4 Commissioners</p>
+                        </div>
+                        <button class="rep-button" onclick="sendEmail('nsbCity')">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Email New Smyrna Beach Commission
+                        </button>
+                    </div>
+
+                    <div class="rep-card">
+                        <div class="rep-info">
+                            <h4>Daytona Beach City Commission</h4>
+                            <p>Mayor + 6 Commissioners</p>
+                        </div>
+                        <button class="rep-button" onclick="sendEmail('daytonaCity')">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Email Daytona Beach Commission
+                        </button>
+                    </div>
+
+                    <div class="rep-card">
+                        <div class="rep-info">
+                            <h4>Ormond Beach City Commission</h4>
+                            <p>Mayor + 4 Commissioners</p>
+                        </div>
+                        <button class="rep-button" onclick="sendEmail('ormondCity')">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Email Ormond Beach Commission
+                        </button>
+                    </div>
+
+                    <div class="rep-card">
+                        <div class="rep-info">
+                            <h4>DeLand City Commission</h4>
+                            <p>Mayor + 4 Commissioners</p>
+                        </div>
+                        <button class="rep-button" onclick="sendEmail('delandCity')">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Email DeLand Commission
+                        </button>
+                    </div>
+
+                    <div class="rep-card">
+                        <div class="rep-info">
+                            <h4>Deltona City Commission</h4>
+                            <p>Mayor + 6 Commissioners</p>
+                        </div>
+                        <button class="rep-button" onclick="sendEmail('deltonaCity')">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Email Deltona Commission
+                        </button>
+                    </div>
+
+                    <div class="rep-card">
+                        <div class="rep-info">
+                            <h4>Port Orange City Council</h4>
+                            <p>Mayor + Council Members</p>
+                        </div>
+                        <button class="rep-button" onclick="sendEmail('portOrangeCity')">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Email Port Orange Council
+                        </button>
+                    </div>
+
+                    <div class="rep-card">
+                        <div class="rep-info">
+                            <h4>South Daytona City Commission</h4>
+                            <p>Mayor + Commissioners</p>
+                        </div>
+                        <button class="rep-button" onclick="sendEmail('southDaytonaCity')">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Email South Daytona Commission
+                        </button>
+                    </div>
+
+                    <div class="rep-card" style="background: #fef3c7; border-color: #fbbf24;">
+                        <div class="rep-info">
+                            <h4>📧 Email ALL Cities + County at Once</h4>
+                            <p style="color: #92400e;">One click to contact every single representative</p>
+                        </div>
+                        <button class="rep-button" style="background: #f59e0b;" onclick="sendEmail('allLocal')">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Email EVERYONE (All Cities + County)
                         </button>
                     </div>
                 </div>
@@ -322,7 +430,7 @@
                             <h4>Senator Tom Leek - FL Senate District 7</h4>
                             <p>leek.tom.web@flsenate.gov • (850) 487-5007</p>
                         </div>
-                        <button class="rep-button" onclick="sendStateEmail()">
+                        <button class="rep-button" onclick="sendEmail('state')">
                             <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
@@ -397,6 +505,32 @@
     </div>
 
     <script>
+        // Contact email addresses
+        const contacts = {
+            countyCouncil: ['jbrower@volusia.org', 'jjohansson@volusia.org', 'ddempsey@volusia.org', 'mreinhart@volusia.org', 'drobins@volusia.org', 'tkent@volusia.org', 'dsantiago@volusia.org'],
+            nsbCity: ['mayor@cityofnsb.com', 'vperrine@cityofnsb.com', 'lmartin@cityofnsb.com', 'jmcguirk@cityofnsb.com', 'bashley@cityofnsb.com'],
+            daytonaCity: ['henryd@codb.us', 'ParisMonica@codb.us', 'stricklandken@codb.us', 'mayquanita@codb.us', 'cantustacy@codb.us', 'henrydannette@codb.us', 'reedpaula@codb.us'],
+            ormondCity: ['jason.leslie@ormondbeach.org', 'lori.tolland@ormondbeach.org', 'travis.sargent@ormondbeach.org', 'kristin.deaton@ormondbeach.org', 'harold.briley@ormondbeach.org'],
+            delandCity: ['cloudmanc@deland.org', 'davisj@deland.org', 'reidk@deland.org', 'reedd@deland.org', 'paivar@deland.org'],
+            deltonaCity: ['savila@deltonafl.gov', 'dheriot@deltonafl.gov', 'esantiago@deltonafl.gov', 'mavilavazquez@deltonafl.gov', 'scolwell@deltonafl.gov', 'dhowington@deltonafl.gov', 'cnabicht@deltonafl.gov'],
+            portOrangeCity: ['mayor@port-orange.org', 'lgreen@port-orange.org', 'council@port-orange.org'],
+            southDaytonaCity: ['bwitte@southdaytona.org', 'esander@southdaytona.org'],
+            state: ['leek.tom.web@flsenate.gov'],
+            allLocal: []
+        };
+
+        // Combine all local emails
+        contacts.allLocal = [
+            ...contacts.countyCouncil,
+            ...contacts.nsbCity,
+            ...contacts.daytonaCity,
+            ...contacts.ormondCity,
+            ...contacts.delandCity,
+            ...contacts.deltonaCity,
+            ...contacts.portOrangeCity,
+            ...contacts.southDaytonaCity
+        ];
+
         // Email templates
         const templates = {
             county: {
@@ -545,30 +679,36 @@ Volusia County Resident`
                 .replace(/\[EMAIL\]/g, email);
         }
 
-        function sendCountyEmail() {
+        function sendEmail(group) {
             const user = validateForm();
             if (!user) return;
 
-            const subject = templates.county.subject;
-            const body = fillTemplate(templates.county.body, user.name, user.email);
+            let subject, body, template;
 
-            const mailtoLink = `mailto:DRobins@volusia.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            // Determine which template to use
+            if (group === 'state') {
+                template = templates.state;
+            } else if (group.includes('federal')) {
+                template = templates.federal;
+            } else {
+                template = templates.county;
+            }
+
+            subject = template.subject;
+            body = fillTemplate(template.body, user.name, user.email);
+
+            // Get recipient emails
+            const recipients = contacts[group] || [];
+
+            if (recipients.length === 0) {
+                showAlert('No email addresses found for this group.', 'error');
+                return;
+            }
+
+            const mailtoLink = `mailto:${recipients.join(',')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
             window.location.href = mailtoLink;
-            showAlert('Opening your email client... If nothing happens, please check your default email app settings.');
-        }
-
-        function sendStateEmail() {
-            const user = validateForm();
-            if (!user) return;
-
-            const subject = templates.state.subject;
-            const body = fillTemplate(templates.state.body, user.name, user.email);
-
-            const mailtoLink = `mailto:leek.tom.web@flsenate.gov?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-            window.location.href = mailtoLink;
-            showAlert('Opening your email client... If nothing happens, please check your default email app settings.');
+            showAlert(`Opening your email client with ${recipients.length} recipient(s)... If nothing happens, please check your default email app settings.`);
         }
 
         async function contactFederal(rep) {
